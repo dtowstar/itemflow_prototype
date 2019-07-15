@@ -1,46 +1,53 @@
 <template>
-  <v-container grid-list-xl>
-    <v-layout text-xs-center wrap>
-      <v-flex v-for="card in cards" :key="card.title" xs3>
-        <v-card>
-          <v-img :src="card.src" height="200px">
-            <v-container fill-height fluid pa-2>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline white--text" v-text="card.title"></span>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-img>
+  <v-layout row class="pd-5">
+    <v-flex xs12 sm6 offset-sm2 class="pt-5">
+      <v-card>
+        <v-flex xs12>
+          <v-img
+            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+            width="300px"
+            style="float: left;"
+          ></v-img>
+          <v-text-field v-model="first" label="First Name" box></v-text-field>
+        </v-flex>
 
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>favorite</v-icon>
-            </v-btn>
-            <v-btn icon>
-              <v-icon>bookmark</v-icon>
-            </v-btn>
-            <v-btn icon>
-              <v-icon>share</v-icon>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+        <v-card-actions>
+          <v-btn flat>Share</v-btn>
+          <v-btn flat color="purple">Explore</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="show = !show">
+            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+
+        <v-slide-y-transition>
+          <v-card-text
+            v-show="show"
+          >I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.</v-card-text>
+        </v-slide-y-transition>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 export default {
-  name: 'CreateItemFlow',
+  name: "CreateItemFlow",
   data: () => ({
     cards: [
-      { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 },
-      { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 }
+      {
+        title: "Pre-fab homes",
+        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+        flex: 12
+      },
+      {
+        title: "Pre-fab homes",
+        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+        flex: 12
+      }
     ]
   })
-}
+};
 </script>
 
 <style>

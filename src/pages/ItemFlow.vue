@@ -15,13 +15,21 @@
       </div>
     </v-flex>
     <!-- center -->
-    <v-flex xs10>
+    <v-flex xs11>
       <v-layout row wrap>
         <!-- title -->
-        <v-flex d-flex xs12>
+        <v-flex d-flex xs11>
           <v-text-field label="Title..." solo outline flat hide-details></v-text-field>
         </v-flex>
-        <v-flex d-flex xs12>
+        <!-- right -->
+        <v-flex d-flex xs1>
+          <v-flex d-flex xs12>
+            <v-btn outline color="info" class="text-none mt-0" @click.stop="drawer = !drawer">
+              <v-icon dark>search</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-flex>
+        <v-flex d-flex xs11>
           <!-- type: item -->
           <v-layout row wrap v-show="type === 'item'">
             <!-- outline -->
@@ -145,14 +153,6 @@
         </v-flex>
       </v-layout>
     </v-flex>
-    <!-- right -->
-    <v-flex d-flex xs1>
-      <v-flex d-flex xs12>
-        <v-btn outline color="info" class="text-none mt-0" @click.stop="drawer = !drawer">
-          <v-icon dark>search</v-icon>
-        </v-btn>
-      </v-flex>
-    </v-flex>
 
     <!-- drawer -->
     <template>
@@ -223,297 +223,328 @@
 
 
 <script>
-import draggable from 'vuedraggable'
+import draggable from "vuedraggable";
 export default {
-  name: 'ItemFlow',
+  name: "ItemFlow",
   components: {
-    draggable,
+    draggable
   },
   data: () => ({
-    type: 'item',
-    title: '',
+    type: "item",
+    title: "",
     // item
-    outline: '',
-    content: '',
+    outline: "",
+    content: "",
     // flow
     selected: [2],
     items: [
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: '1st',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "1st",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       },
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "Ali Connors",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       },
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "Ali Connors",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       },
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "Ali Connors",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       },
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "Ali Connors",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       },
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "Ali Connors",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       },
       {
-        id: '9',
-        action: '15 min',
-        headline: 'Brunch this weekend?',
-        title: 'Ali Connors',
-        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        id: "9",
+        action: "15 min",
+        headline: "Brunch this weekend?",
+        title: "Ali Connors",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
       },
       {
-        id: '10',
-        action: '2 hr',
-        headline: 'Summer BBQ',
-        title: 'me, Scrott, Jennifer',
+        id: "10",
+        action: "2 hr",
+        headline: "Summer BBQ",
+        title: "me, Scrott, Jennifer",
         subtitle: "Wish I could come, but I'm out of town this weekend."
       },
       {
-        id: '11',
-        action: '6 hr',
-        headline: 'Oui oui',
-        title: 'Sandra Adams',
-        subtitle: 'Do you have Paris recommendations? Have you ever been?'
+        id: "11",
+        action: "6 hr",
+        headline: "Oui oui",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
       },
       {
-        id: '12',
-        action: '12 hr',
-        headline: 'Birthday gift',
-        title: 'Trevor Hansen',
-        subtitle: 'Have any ideas about what we should get Heidi for her birthday?'
+        id: "12",
+        action: "12 hr",
+        headline: "Birthday gift",
+        title: "Trevor Hansen",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
       },
       {
-        id: '13',
-        action: '18hr',
-        headline: 'Recipe to try',
-        title: 'Britta Holt',
-        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.'
+        id: "13",
+        action: "18hr",
+        headline: "Recipe to try",
+        title: "Britta Holt",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
       }
     ],
     // tag
-    chips_from: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
-    chipsItems_from: ['Streaming', 'Eating'],
-    chips_to: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
-    chipsItems_to: ['Streaming', 'Eating'],
+    chips_from: [
+      "Programming",
+      "Playing video games",
+      "Watching movies",
+      "Sleeping"
+    ],
+    chipsItems_from: ["Streaming", "Eating"],
+    chips_to: [
+      "Programming",
+      "Playing video games",
+      "Watching movies",
+      "Sleeping"
+    ],
+    chipsItems_to: ["Streaming", "Eating"],
     // drawer
     drawer: false
   }),
   methods: {
     // flow
-    toggle (index) {
-      const i = this.selected.indexOf(index)
+    toggle(index) {
+      const i = this.selected.indexOf(index);
 
       if (i > -1) {
-        this.selected.splice(i, 1)
+        this.selected.splice(i, 1);
       } else {
-        this.selected.push(index)
+        this.selected.push(index);
       }
     },
     // tag
-    remove_chips_from (item) {
-      this.chips_from.splice(this.chips_from.indexOf(item), 1)
-      this.chips_from = [...this.chips_from]
+    remove_chips_from(item) {
+      this.chips_from.splice(this.chips_from.indexOf(item), 1);
+      this.chips_from = [...this.chips_from];
     },
-    remove_chips_to (item) {
-      this.chips_to.splice(this.chips_to.indexOf(item), 1)
-      this.chips_to = [...this.chips_to]
+    remove_chips_to(item) {
+      this.chips_to.splice(this.chips_to.indexOf(item), 1);
+      this.chips_to = [...this.chips_to];
     }
   }
-}
+};
 </script>
 
 <style>
@@ -527,5 +558,8 @@ export default {
   bottom: 70px;
   right: 50px;
   z-index: 100;
+}
+#rsearch {
+  width: 10px;
 }
 </style>

@@ -15,7 +15,7 @@
 
       <!-- search -->
       <div
-        style="width: 600px; border: 1px solid #e8e8e8"
+        id="search"
         v-show="$route.name === 'Home' || $route.name === 'Favorite' || $route.name === 'Trash'"
       >
         <v-text-field
@@ -59,16 +59,23 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
-      searchInput: ''
-    }
+      searchInput: ""
+    };
   }
-}
+};
 </script>
 <style>
 .v-input__slot {
   margin-bottom: 0;
+}
+
+@media screen and (max-height: 1920px) {
+  #search {
+    width: 400px;
+    border: 1px solid #e8e8e8;
+  }
 }
 </style>
